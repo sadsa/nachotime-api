@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nachotime-api", "nachotime-api.csproj", "{A5BFC71D-3C36-4A77-9385-A9643BA943EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nachotime-api", "nachotime-api\nachotime-api.csproj", "{A5BFC71D-3C36-4A77-9385-A9643BA943EC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nachotime-services", "nachotime-services\nachotime-services.csproj", "{594A1435-AD81-458E-83E0-FF8C74DF115F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nachotime-data", "nachotime-data\nachotime-data.csproj", "{0A6C1754-112E-41D0-AA01-4F849DAB18E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nachotime-api-models", "nachotime-api-models\nachotime-api-models.csproj", "{B0E0DD46-F50B-47B7-BF81-965ECBE66C90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{A5BFC71D-3C36-4A77-9385-A9643BA943EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5BFC71D-3C36-4A77-9385-A9643BA943EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5BFC71D-3C36-4A77-9385-A9643BA943EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594A1435-AD81-458E-83E0-FF8C74DF115F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594A1435-AD81-458E-83E0-FF8C74DF115F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594A1435-AD81-458E-83E0-FF8C74DF115F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594A1435-AD81-458E-83E0-FF8C74DF115F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A6C1754-112E-41D0-AA01-4F849DAB18E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6C1754-112E-41D0-AA01-4F849DAB18E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6C1754-112E-41D0-AA01-4F849DAB18E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6C1754-112E-41D0-AA01-4F849DAB18E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0E0DD46-F50B-47B7-BF81-965ECBE66C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0E0DD46-F50B-47B7-BF81-965ECBE66C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0E0DD46-F50B-47B7-BF81-965ECBE66C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0E0DD46-F50B-47B7-BF81-965ECBE66C90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
