@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -16,8 +15,7 @@ namespace nachotime_data.Migrations
                 name: "Cards",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Title = table.Column<string>(type: "text", nullable: false),
                     Phrase = table.Column<string>(type: "text", nullable: false),
                     Translation = table.Column<string>(type: "text", nullable: false),
@@ -34,12 +32,11 @@ namespace nachotime_data.Migrations
                 name: "Expressions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     IsKnown = table.Column<bool>(type: "boolean", nullable: false),
                     Translation = table.Column<string>(type: "text", nullable: true),
                     Definition = table.Column<string>(type: "text", nullable: true),
-                    CardId = table.Column<int>(type: "integer", nullable: true),
+                    CardId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
@@ -49,7 +46,8 @@ namespace nachotime_data.Migrations
                         name: "FK_Expressions_Cards_CardId",
                         column: x => x.CardId,
                         principalTable: "Cards",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

@@ -12,7 +12,7 @@ using nachotime_data;
 namespace nachotime_data.Migrations
 {
     [DbContext(typeof(NachotimeDbContext))]
-    [Migration("20230614035117_InitialCreate")]
+    [Migration("20230616041344_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -27,11 +27,9 @@ namespace nachotime_data.Migrations
 
             modelBuilder.Entity("nachotime_data.Models.Card", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -62,14 +60,12 @@ namespace nachotime_data.Migrations
 
             modelBuilder.Entity("nachotime_data.Models.Expression", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("CardId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("CardId")
+                        .HasColumnType("uuid");
 
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -92,9 +88,13 @@ namespace nachotime_data.Migrations
 
             modelBuilder.Entity("nachotime_data.Models.Expression", b =>
                 {
-                    b.HasOne("nachotime_data.Models.Card", null)
+                    b.HasOne("nachotime_data.Models.Card", "Card")
                         .WithMany("Expressions")
-                        .HasForeignKey("CardId");
+                        .HasForeignKey("CardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Card");
                 });
 
             modelBuilder.Entity("nachotime_data.Models.Card", b =>
