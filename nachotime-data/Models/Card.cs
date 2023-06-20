@@ -1,4 +1,6 @@
-﻿namespace nachotime_data.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace nachotime_data.Models;
 
 public enum WorkflowStatus
 {
@@ -14,5 +16,5 @@ public class Card : EntityBase
     public string Translation { get; set; } = null!;
     public string PlaybackAudioUrl { get; set; } = null!;
     public WorkflowStatus WorkflowStatus { get; set; }
-    public List<Expression> Expressions { get; set; } = new List<Expression>();
+    [Column(TypeName = "jsonb")] public List<Expression> Expressions { get; set; } = new List<Expression>();
 }

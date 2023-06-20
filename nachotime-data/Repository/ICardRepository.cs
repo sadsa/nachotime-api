@@ -9,6 +9,6 @@ namespace nachotime_data.Repository
         Task CreateCardAsync(Card card);
         IQueryable<Card> GetAllCardsAsync();
         Task<Card?> GetCardByIdAsync(Guid id);
-        Task UpdateCardAsync(Card card);
+        Task SaveChangesAsync();
     }
 }

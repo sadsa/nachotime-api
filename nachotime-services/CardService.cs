@@ -37,8 +37,11 @@ public class CardService : ICardService
         return _mapper.Map<CardApiModel>(dbCard);
     }
 
-    public Task UpdateCardAsync(CardApiModel cardApiModel)
+    public async Task UpdateCardAsync(CardApiModel cardApiModel)
     {
-        throw new NotImplementedException();
+        var dbCard = await _repository.GetCardByIdAsync(cardApiModel.Id);
+        if (dbCard == null) throw new Exception(nameof(dbCard));
+        _mapper.Map<CardApiModel, Card>(cardApiModel, dbCard);
+        await _repository.SaveChangesAsync();
     }
 }

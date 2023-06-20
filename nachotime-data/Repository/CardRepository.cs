@@ -28,9 +28,9 @@ namespace nachotime_data.Repository
             return await _context.Cards.SingleOrDefaultAsync(c => c.Id == id);
         }
 
-        public Task UpdateCardAsync(Card card)
+        public async Task SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
         }
     }
 }

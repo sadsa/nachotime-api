@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using nachotime_api_models.Models;
 using nachotime_services;
@@ -16,25 +17,26 @@ namespace nachotime_api.Controllers
         }
 
         [HttpGet()]
-        async public Task<IEnumerable<CardApiModel>> Get()
+        [Authorize("read:cards")]
+        public async Task<IEnumerable<CardApiModel>> Get()
         {
             return await _service.GetAllCardsAsync();
         }
 
         [HttpGet("{id:guid}")]
-        async public Task<CardApiModel> Get(Guid id)
+        public async Task<CardApiModel> Get(Guid id)
         {
             return await _service.GetCardByIdAsync(id);
         }
 
         [HttpPost()]
-        async public Task Create(CardApiModel cardApiModel)
+        public async Task Create(CardApiModel cardApiModel)
         {
             await _service.CreateCardAsync(cardApiModel);
         }
 
         [HttpPut()]
-        async public Task Update(CardApiModel cardApiModel)
+        public async Task Update(CardApiModel cardApiModel)
         {
             await _service.UpdateCardAsync(cardApiModel);
         }
