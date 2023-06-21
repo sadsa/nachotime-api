@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using nachotime_api_models.Models;
+using nachotime_common.Exceptions;
 using nachotime_data.Models;
 using nachotime_data.Repository;
 
@@ -33,14 +34,14 @@ public class CardService : ICardService
     public async Task<CardApiModel> GetCardByIdAsync(Guid id)
     {
         var dbCard = await _repository.GetCardByIdAsync(id);
-        if (dbCard == null) throw new Exception("Record not found");
+        if (dbCard == null) throw new NotFoundException();
         return _mapper.Map<CardApiModel>(dbCard);
     }
 
     public async Task UpdateCardAsync(CardApiModel cardApiModel)
     {
         var dbCard = await _repository.GetCardByIdAsync(cardApiModel.Id);
-        if (dbCard == null) throw new Exception(nameof(dbCard));
+        if (dbCard == null) throw new NotFoundException(nameof(dbCard));
         _mapper.Map<CardApiModel, Card>(cardApiModel, dbCard);
         await _repository.SaveChangesAsync();
     }

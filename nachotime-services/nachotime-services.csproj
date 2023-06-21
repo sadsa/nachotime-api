@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\nachotime-api-models\nachotime-api-models.csproj" />
+    <ProjectReference Include="..\nachotime-common\nachotime-common.csproj" />
     <ProjectReference Include="..\nachotime-data\nachotime-data.csproj" />
   </ItemGroup>
 
